@@ -449,48 +449,6 @@ ggplot(f_20, aes(d_R_M_20@dist)) +
 
 
 
-##More variables 
-#Percentage of tree coverage-DEM-Anual Evapotranspiration - Anual Aridity - Primary productivity
-library(raster)
-r <- raster("D:\\Jesus_data\\PlantCoverage\\gm_ve_v1.tif")
-library(maptools)
-library(rgdal)
-area <- readOGR("C:\\Users\\mari1\\Desktop\\Jesus\\data\\Nicaragua.shp") #plot(area)
-c <-mask(r, area)
-writeRaster(c, "D:\\Jesus_data\\PlantCoverage\\PlantCov_Nic.asc", format="ascii")
-c<-raster("D:\\Jesus_data\\PlantCoverage\\PlantCov_Nic.asc")
-plot(c)
-
-
-#extract values to all xy 
-library(raster)
-bio1<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_1.asc")
-bio2<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_2.asc")
-bio3<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_3.asc")
-bio4<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_4.asc")
-bio5<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_5.asc")
-bio6<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_6.asc")
-bio7<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_7.asc")
-#bio8<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_8.asc")
-#bio9<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_9.asc")
-bio10<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_10.asc")
-bio11<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_11.asc")
-bio12<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_12.asc")
-bio13<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_13.asc")
-bio14<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_14.asc")
-bio15<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_15.asc")
-bio16<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_16.asc")
-bio17<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_17.asc")
-#bio18<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_18.asc")
-#bio19<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\bio_19.asc")
-alt<- raster("D:\\Jesus_data\\Bios\\Nicaragua_30s\\Nicaragua\\alt.asc")
-StackRawBios <- stack(bio1, bio2, bio3, bio4, bio5, bio6, bio7, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17,alt)
-NicaraguaXY <- rasterToPoints(bio1, fun=NULL, spatial=FALSE) #head(NicaraguaXY)                    # transform to points to create a table of values of points 
-NicaraguaXY <- cbind(NicaraguaXY[,1], NicaraguaXY[,2])
-colnames(NicaraguaXY) <- c('long', 'lat')
-NicaraguaValuesBios <- rasterToPoints(StackRawBios, fun=NULL, spatial=FALSE) #head(NicaraguaValuesBios)
-
-
 
 
 
